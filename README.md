@@ -72,7 +72,17 @@ _Assessing: Ability to produce clean tests and documentation for code._
 
 ### **☐ Suggest a new task for this challenge**
 
-Write up a proposed challenge to add to this repository for assessing developers. Do not solve the code challenge. Just write the task, and why this would make a good challenge to include for future developers.
+Depending upon the expectations from the role, I would suggest the following:
+1. Some database intensive task, to judge where candidate puts indices, where they put db level constraints.
+  Ex. Build a page for posts by company, paginated, ordered by recency
+  What can we deduce from this?
+  1. foreign key
+  2. indices
+  3. different ways of pagination, etc.
+
+2. Some code, with wrong practices in place, and judging whether candidate is able to locate and fix them.
+  1. like n+1 queries
+  2. default_scope
 
 _Assessing: Engineering instinct, writing, ability to document up a deliverable concisely._
 
@@ -92,7 +102,7 @@ Since this a public repository, raising a Pull Request will not be the same as w
 - Clone the challenge to your local from your new forked repo in your personal git account
   ```
     git clone <forked account — main street coding challenge https url>
-    
+
     example: git clone https://github.com/Sushanthbc/code-challenge.git
   ```
 - Any changes made in the original repository would not be synced to forked repository in your personal git account. Below commands enable us to track the original repository as a remote of the fork
