@@ -63,9 +63,9 @@
         <label><strong>Services</strong><br><small class="text-muted">List the services offered by this company</small></label>
       </div>
       <div class="col-lg offset-lg-1">
-          <div data-controller="services" class="form-group">
-            <%= f.select :services, options_for_select(["Interior Painting", "Commercial Painting", "Exterior Painting"], @company.services), {include_blank: true, required: false}, multiple: true, "data-target": "services.select2", class: "form-control" %>
-          </div>
+        <div data-controller="services" class="form-group">
+          <%= f.select :services, options_for_select(["Interior Painting", "Commercial Painting", "Exterior Painting"], @company.services), {include_blank: true, required: false}, multiple: true, "data-target": "services.select2", class: "form-control" %>
+        </div>
       </div>
     </div>
 
@@ -75,6 +75,14 @@
           <%= f.submit class: "btn btn-success"%>
         </div>
       </div>
+
+      <%- if @company.id.present? %>
+        <div class="col">
+          <div class="form-group">
+            <%= link_to('Delete', @company, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger float-right") %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

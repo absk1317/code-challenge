@@ -2,7 +2,6 @@ require "test_helper"
 require "application_system_test_case"
 
 class CompaniesControllerTest < ApplicationSystemTestCase
-
   def setup
     @company = companies(:hometown_painting)
   end
@@ -28,7 +27,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     visit edit_company_path(@company)
 
     within("form#edit_company_#{@company.id}") do
-      fill_in("company_name", with: "Updated Test Company")
+      fill_in("company_name", with: "Updated Test Company", fill_options: { clear: :backspace })
       fill_in("company_zip_code", with: "93009")
       click_button "Update Company"
     end
@@ -38,6 +37,20 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     @company.reload
     assert_equal "Updated Test Company", @company.name
     assert_equal "93009", @company.zip_code
+  end
+
+  test 'Delete' do
+    visit edit_company_path(@company)
+
+    page.accept_confirm do
+      click_link 'Delete'
+    end
+
+    assert_text 'Deleted'
+
+    assert_raises ActiveRecord::RecordNotFound do
+      @company.reload
+    end
   end
 
   test "Create" do
@@ -57,5 +70,4 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     assert_equal "New Test Company", last_company.name
     assert_equal "28173", last_company.zip_code
   end
-
 end
