@@ -26,6 +26,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       redirect_to companies_path, notice: 'Changes Saved'
     else
+      flash[:alert] = @company.errors.full_messages.join("<br/> ")
       render :edit
     end
   end

@@ -52,7 +52,7 @@
         <label><strong>Email</strong><br><small class="text-muted">Shown in marketing</small></label>
       </div>
       <div class="col-lg offset-lg-1">
-        <div class="form-group">
+        <div class="form-group" data-controller="emails">
           <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
         </div>
       </div>
@@ -71,8 +71,8 @@
 
     <div class="row my-lg-3">
       <div class="col">
-        <div class="form-group">
-          <%= f.submit class: "btn btn-success"%>
+        <div class="form-group" data-controller="companies">
+          <%= f.submit class: "btn btn-success", id: 'submit_company' %>
         </div>
       </div>
 
