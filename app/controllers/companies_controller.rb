@@ -24,6 +24,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
+      # redirect_to company_path(@company), notice: 'Saved'
       redirect_to companies_path, notice: 'Changes Saved'
     else
       flash[:alert] = @company.errors.full_messages.join("<br/> ")
@@ -51,6 +52,7 @@ class CompaniesController < ApplicationController
             :phone,
             :email,
             :owner_id,
+            :brand_color,
             services: []
           )
   end

@@ -20,7 +20,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     assert_text @company.name
     assert_text @company.phone
     assert_text @company.email
-    assert_text "City, State"
+    assert_text @company.location
   end
 
   test "Update Success" do
@@ -30,6 +30,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
       fill_in("company_name", with: "Updated Test Company", fill_options: { clear: :backspace })
       fill_in("company_zip_code", with: "93009")
       fill_in("company_email", with: "new_test_company@getmainstreet.com", fill_options: { clear: :backspace })
+      fill_in("company_brand_color", with: "#ffffff")
       click_button "Update Company"
     end
 
@@ -38,6 +39,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     @company.reload
     assert_equal "Updated Test Company", @company.name
     assert_equal "93009", @company.zip_code
+    assert_equal "#ffffff", @company.brand_color
   end
 
   test "Update Failure" do
