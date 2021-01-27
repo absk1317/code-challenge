@@ -11,8 +11,7 @@
   <div class="bg-success">
     <div class="container p-5 text-white">
       <h1><%= @company.name %></h1>
-      <h3><mark>City, State</mark></h3>
-      <pre><mark>☝️ This is what needs to be udpated. Examples: Atlanta, GA or Nashvile, TN</mark></pre>
+      <h3><mark><%= @company.location %></mark></h3>
     </div>
   </div>
 
@@ -30,8 +29,8 @@
           <p><%= @company.phone %><br>
           <input type="hidden" value="<%= @company.phone %>" data-target="clipboard.source"></input>
           <a data-action="clipboard#copy" class="clipboard-button pointer text-decoration-none text-dark"> copy</a>
-          <a data-target="clipboard.notice" class="clipboard-button pointer d-none text-decoration-none text-dark" class="d-none"> copied</a> 
-          </p>         
+          <a data-target="clipboard.notice" class="clipboard-button pointer d-none text-decoration-none text-dark" class="d-none"> copied</a>
+          </p>
         </div>
     </div>
   </div>
