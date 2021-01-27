@@ -7,6 +7,8 @@ class Company < ApplicationRecord
 
   before_save :populate_city_state, if: -> { zip_code_changed? }
 
+  ## decorator for company location.
+  ## should ideally be in a decorator class
   def location
     if city.present? && state.present?
       "#{city}, #{state}"
@@ -21,6 +23,7 @@ class Company < ApplicationRecord
 
   private
 
+  ## try to fetch data from the zipcodes gem (Provided with repo), fail gracefully if any exception occurs
   def populate_city_state
     ## This could be moved to a PORO service object, for more maintainability.
     data = ZipCodes.identify(zip_code)
